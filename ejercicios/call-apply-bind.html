@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio Call - Apply - Bind</title>
+  </head>
+  <body>
+    <script>
+      // Usando Call
+      /* Usando call con una funcion sin parametros */
+      function testCall() {
+        console.log(
+          `Usando call,apply,bind: nombre: ${this.name} apellido: ${this.lastname}`
+        );
+      }
+
+      const personalName = {
+        name: "Antonio",
+        lastname: "Berardi",
+      };
+
+      testCall.call(personalName);
+
+      /* Usar call con una funcion que tiene parametros */
+      function ruta(tipoLlamada, tipo, distancia) {
+        console.log(
+          `Usando ${tipoLlamada}: Hoy ${this.name} ire al trabajo en ${tipo} a una distancia de ${distancia}`
+        );
+      }
+      ruta.call(personalName,"call","tren", "14.6 km");
+
+
+      // Usando apply
+      ruta.apply(personalName, ["apply","tren","14.6 km"]);
+
+      const valores = ["apply","tren", "14.6 km"];
+      ruta.apply(personalName, valores);
+
+      // Usando bind
+      /* Usando bind sin pase de parametros */
+      const persona = {
+          name: "Pablito",
+          lastname: "Perez"
+      };
+      const saludar = testCall.bind(persona);
+      saludar();
+
+      /* Usando bind con pase de parametros */
+      const caminar = ruta.bind(persona,"bind","caminando");
+      caminar("20 km");
+    </script>
+    <h1>Revisar resultados en consola del navegador</h1>
+  </body>
+</html>
