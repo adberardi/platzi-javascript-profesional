@@ -44,4 +44,8 @@ function MediaPlayer(config) {
     });
   }
 
+  MediaPlayer.prototype.pause = function () {
+    this.media.pause();
+  }
+
 export default MediaPlayer;
