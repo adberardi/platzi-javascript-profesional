@@ -17,7 +17,9 @@
   "devDependencies": {
     "live-server": "^1.2.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "fast-levenshtein": "^3.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adberardi/platzi-javascript-profesional.git"
