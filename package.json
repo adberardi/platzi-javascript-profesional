@@ -4,7 +4,7 @@
   "description": "Proyecto para el curso profesional de Platzi-Javascript",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html ejercicios/index.html ejercicios/index.html ejercicios/**/*.html",
+    "start": "parcel index.html ejercicios/index.html ejercicios/**/*.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": [

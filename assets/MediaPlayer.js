@@ -1,21 +1,20 @@
-function MediaPlayer(config) {
+class MediaPlayer {
+  constructor(config) {
     this.media = config.el;
     this.type = config.type;
     this.muted = config.muted;
     this.plugin = config.plugin || [];
     this.autoplay();
   }
-  
-  MediaPlayer.prototype.play = function () {
+  play() {
     if (this.type) {
       this.media.play();
     } else {
       this.media.pause();
     }
     this.type = !this.type;
-  };
-  
-  MediaPlayer.prototype.mute = function () {
+  }
+  mute() {
     console.log(this.muted);
     if (this.muted) {
       this.media.muted = true;
@@ -23,19 +22,17 @@ function MediaPlayer(config) {
       this.media.muted = false;
     }
     this.muted = !this.muted;
-  };
-  
-  
-  MediaPlayer.prototype.autoplay = function () {
+  }
+  autoplay() {
     const player = {
       play: () => this.play(),
       pause: () => this.pause(),
       media: this.media,
-      get muted(){
+      get muted() {
         return this.media.muted;
       },
-      set muted(value){
-          this.media.muted = value;
+      set muted(value) {
+        this.media.muted = value;
       }
     };
 
@@ -43,9 +40,14 @@ function MediaPlayer(config) {
       element.run(player);
     });
   }
-
-  MediaPlayer.prototype.pause = function () {
+  pause() {
     this.media.pause();
   }
+}
+  
+  
+  
+  
+
 
 export default MediaPlayer;
