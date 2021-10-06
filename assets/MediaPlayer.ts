@@ -1,4 +1,8 @@
 class MediaPlayer {
+  media: HTMLMediaElement;
+  plugin: Array<any>;
+  type: boolean;
+  muted: boolean;
   constructor(config) {
     this.media = config.el;
     this.type = config.type;
@@ -6,6 +10,13 @@ class MediaPlayer {
     this.plugin = config.plugin || [];
     this.autoplay();
   }
+  
+  private initPlugins(){
+    this.plugin.forEach(element => {
+      element.run(this);
+    });
+  }
+
   play() {
     if (this.type) {
       this.media.play();
@@ -35,19 +46,10 @@ class MediaPlayer {
         this.media.muted = value;
       }
     };
-
-    this.plugin.forEach(element => {
-      element.run(player);
-    });
   }
   pause() {
     this.media.pause();
   }
 }
-  
-  
-  
-  
-
 
 export default MediaPlayer;
